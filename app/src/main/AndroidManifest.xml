@@ -9,8 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.StartActivity"/>
-        <activity android:name=".presentation.SplashActivity"
+        <activity android:name=".presentation.ServiceRequest"></activity>
+        <activity android:name=".presentation.center.RequestsActivity" />
+        <activity android:name=".presentation.center.ServicesActivity" />
+        <activity android:name=".presentation.center.LoginActivity" />
+        <activity android:name=".presentation.client.RepairCarHomeActivity" />
+        <activity android:name=".presentation.center.MaintenanceCenterRegisterationActivity" />
+        <activity android:name=".presentation.center.MaintenanceCenterHomeActivity" />
+        <activity android:name=".presentation.StartActivity" />
+        <activity
+            android:name=".presentation.SplashActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

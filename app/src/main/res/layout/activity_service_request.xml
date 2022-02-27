@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorTransBg"
+    tools:context=".presentation.ServiceRequest">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.ServiceRequest"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/titleBarView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:src="@drawable/ic_back_black"
+                android:tint="@color/colorPrimaryDark" />
+
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="42dp"
+                android:layout_toEndOf="@id/btnBack"
+                android:src="@drawable/logo_transparent" />
+
+            <TextView
+                android:id="@+id/servicesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/logoImageView"
+                android:fontFamily="@font/squada_one"
+                android:text="Service Request"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Phone:"
+                android:textSize="16sp"
+                android:gravity="center|start"/>
+
+            <EditText
+                android:id="@+id/phoneEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Issue:"
+                android:textSize="16sp"
+                android:gravity="center|start"/>
+
+            <EditText
+                android:id="@+id/issueEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="120dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="center|start"
+                android:hint="Describe your issue here"
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Service:   "
+                android:textSize="16sp"
+                android:gravity="center|start"/>
+            <EditText
+                android:id="@+id/serviceEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Service"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Region:    "
+                android:textSize="16sp"
+                android:gravity="center|start"/>
+            <EditText
+                android:id="@+id/regionEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Region"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:weightSum="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Offer:"
+                android:textSize="16sp"
+                android:gravity="start|center"/>
+
+            <EditText
+                android:id="@+id/offerEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Offer"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:weightSum="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Feedback:"
+                android:textSize="14sp"
+                android:gravity="start|center"/>
+
+            <EditText
+                android:id="@+id/feedbackEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Feedback"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:weightSum="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Comment:"
+                android:textSize="16sp"
+                android:gravity="start|center"/>
+
+            <EditText
+                android:id="@+id/commentEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Comment"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:weightSum="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Appointment:"
+                android:textSize="14sp"
+                android:gravity="start|center"/>
+
+            <EditText
+                android:id="@+id/appointmentEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Appointment"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:weightSum="5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Deal:"
+                android:textSize="16sp"
+                android:gravity="start|center"/>
+            <EditText
+                android:id="@+id/dealEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Deal"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

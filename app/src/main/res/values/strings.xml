@@ -3,4 +3,20 @@
     <string name="repair_my_car">Repair My Car</string>
     <string name="login_as_car_maintenance">Login as Car Maintenance Center</string>
     <string name="not_a_member">Not a member yet? Register Now</string>
+    <string name="register_as_maintenance_center">Register As Maintenance Center</string>
+    <string name="full_name">Name</string>
+    <string name="region">Region</string>
+    <string name="phone">Phone</string>
+    <string name="lang">longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="location_lbl">Location:</string>
+    <string name="category">Category</string>
+    <string name="categoryName">Category Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register">Register</string>
+    <string name="requests">REQUESTS</string>
+    <string name="services">SERVICES</string>
+    <string name="login_to_your_account">Login to your account</string>
 </resources>

@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.ServiceRequest"></activity>
+        <activity android:name=".presentation.client.MaintenanceShopListActivity"></activity>
+        <activity android:name=".presentation.client.MyRepairRequestActivity" />
+        <activity android:name=".presentation.client.ServiceDetailsActivity" />
+        <activity android:name=".presentation.ServiceRequest" />
         <activity android:name=".presentation.center.RequestsActivity" />
         <activity android:name=".presentation.center.ServicesActivity" />
         <activity android:name=".presentation.center.LoginActivity" />

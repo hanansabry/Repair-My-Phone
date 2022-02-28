@@ -19,4 +19,7 @@
     <string name="requests">REQUESTS</string>
     <string name="services">SERVICES</string>
     <string name="login_to_your_account">Login to your account</string>
+    <string name="service">Service</string>
+    <string name="search_maintenance_center">Search Maintenance Center</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

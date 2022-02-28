@@ -208,27 +208,45 @@
         </LinearLayout>
 
         <!--        Category Name-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputCategoryName"
+        <LinearLayout
+            android:id="@+id/categoryNameView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="138dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="-8dp"
             android:layout_marginEnd="24dp"
-            android:hint="@string/categoryName"
-            android:visibility="gone"
-            app:boxBackgroundMode="none"
-            app:errorEnabled="true">
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:visibility="gone">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCategoryName"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/corner_light_white"
-                android:gravity="center_vertical"
-                android:inputType="textPersonName"
-                android:textAlignment="viewStart"
-                android:textColor="@color/colorPrimary" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputCategoryName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="@string/categoryName"
+                app:boxBackgroundMode="none"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextCategoryName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/corner_light_white"
+                    android:gravity="center_vertical"
+                    android:inputType="textPersonName"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorPrimary" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <!--        Location-->
         <LinearLayout
@@ -261,7 +279,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextLang"
                     android:layout_width="match_parent"
-                    android:layout_height="46dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/corner_light_white"
                     android:gravity="center_vertical"
                     android:inputType="numberDecimal"
@@ -281,7 +299,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextLat"
                     android:layout_width="match_parent"
-                    android:layout_height="46dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/corner_light_white"
                     android:gravity="center_vertical"
                     android:inputType="numberDecimal"

@@ -1,15 +1,18 @@
 package com.app.cms.presentation.center;
 
-import androidx.appcompat.app.AppCompatActivity;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.app.cms.R;
+import com.app.cms.presentation.viewmodels.LoginViewModel;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -18,11 +21,26 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.editTextPassword)
     EditText editTextPassword;
 
+    private LoginViewModel loginViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        loginViewModel.getSuccess().observe(this, success -> {
+            if (success) {
+                startActivity(new Intent(this, MaintenanceCenterHomeActivity.class));
+            } else {
+                Toast.makeText(this, "Invalid credentials..", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        loginViewModel.getError().observe(this, error -> {
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        });
     }
 
     @OnClick(R.id.btnBack)
@@ -32,7 +50,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnLogin)
     public void onLoginClicked() {
-        startActivity(new Intent(this, MaintenanceCenterHomeActivity.class));
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
+        loginViewModel.login(email, password);
     }
 
     @OnClick(R.id.btnRegister)

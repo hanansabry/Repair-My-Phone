@@ -15,4 +15,6 @@ public interface MaintenanceCenterRepository {
     void addNewCenter(MaintenanceCenter center, MutableLiveData<Boolean> success);
 
     void retrieveAllCenters(MutableLiveData<List<MaintenanceCenter>> allCentersLiveData);
+
+    void retrieveCenterById(String uId, MutableLiveData<MaintenanceCenter> centerMutableLiveData);
 }

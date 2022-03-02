@@ -39,4 +39,16 @@ public class MaintenanceCenterRepositoryImpl implements MaintenanceCenterReposit
     public void retrieveAllCenters(MutableLiveData<List<MaintenanceCenter>> allCentersLiveData) {
 
     }
+
+    @Override
+    public void retrieveCenterById(String uId, MutableLiveData<MaintenanceCenter> centerMutableLiveData) {
+        if (uId.equals("hanan")) {
+            MaintenanceCenter center = new MaintenanceCenter();
+            center.setName("Hanan Maintenance Center");
+            center.setCategory("Category 1");
+            centerMutableLiveData.setValue(center);
+        } else {
+            centerMutableLiveData.setValue(null);
+        }
+    }
 }

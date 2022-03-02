@@ -1,11 +1,14 @@
 package com.app.cms.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class ServiceRequest {
+public class ServiceRequest implements Parcelable {
 
     private String id;
-    private long phone;
+    private String phone;
     private MaintenanceCenter center;
     private String issue;
     private String service;
@@ -16,6 +19,33 @@ public class ServiceRequest {
     private Date appointment;
     private String status;
 
+    public ServiceRequest() {
+    }
+
+    protected ServiceRequest(Parcel in) {
+        id = in.readString();
+        phone = in.readString();
+        issue = in.readString();
+        service = in.readString();
+        region = in.readString();
+        offer = in.readString();
+        feedback = in.readString();
+        comment = in.readString();
+        status = in.readString();
+    }
+
+    public static final Creator<ServiceRequest> CREATOR = new Creator<ServiceRequest>() {
+        @Override
+        public ServiceRequest createFromParcel(Parcel in) {
+            return new ServiceRequest(in);
+        }
+
+        @Override
+        public ServiceRequest[] newArray(int size) {
+            return new ServiceRequest[size];
+        }
+    };
+
     public String getId() {
         return id;
     }
@@ -24,11 +54,11 @@ public class ServiceRequest {
         this.id = id;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -102,5 +132,23 @@ public class ServiceRequest {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(phone);
+        dest.writeString(issue);
+        dest.writeString(service);
+        dest.writeString(region);
+        dest.writeString(offer);
+        dest.writeString(feedback);
+        dest.writeString(comment);
+        dest.writeString(status);
     }
 }

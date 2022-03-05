@@ -19,8 +19,8 @@ public class ServiceRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_service_request);
         ButterKnife.bind(this);
 
-        ServiceRequest serviceRequest = (ServiceRequest) getIntent().getExtras().get(Constants.SERVICE_REQUEST);
-        Toast.makeText(this, serviceRequest.getPhone(), Toast.LENGTH_SHORT).show();
+//        ServiceRequest serviceRequest = (ServiceRequest) getIntent().getExtras().get(Constants.SERVICE_REQUEST);
+//        Toast.makeText(this, serviceRequest.getPhone(), Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.btnBack)

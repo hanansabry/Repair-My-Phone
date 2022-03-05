@@ -22,7 +22,7 @@ public class RetrieveCategoriesViewModel extends ViewModel {
         retrieveCategoriesUseCase.execute(categoryListMutableLiveData);
     }
 
-    public MutableLiveData<List<Category>> getCategories() {
+    public MutableLiveData<List<Category>> getCategoriesLiveData() {
         return categoryListMutableLiveData;
     }
 }

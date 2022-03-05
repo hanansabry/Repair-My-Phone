@@ -23,6 +23,10 @@ public class RetrieveServicesViewModel extends ViewModel {
         retrieveServicesUseCase.executeByCenterId(centerId, serviceListMutableLiveData);
     }
 
+    public void retrieveServicesByCategoryId(String categoryId) {
+        retrieveServicesUseCase.executeByCategoryId(categoryId, serviceListMutableLiveData);
+    }
+
     public MutableLiveData<List<Service>> getServiceListLiveData() {
         return serviceListMutableLiveData;
     }

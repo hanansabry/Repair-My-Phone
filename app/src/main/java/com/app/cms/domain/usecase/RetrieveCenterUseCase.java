@@ -5,11 +5,11 @@ import com.app.cms.model.MaintenanceCenter;
 
 import androidx.lifecycle.MutableLiveData;
 
-public class GetCenterUseCase {
+public class RetrieveCenterUseCase {
 
     private final MaintenanceCenterRepository maintenanceCenterRepository;
 
-    public GetCenterUseCase(MaintenanceCenterRepository maintenanceCenterRepository) {
+    public RetrieveCenterUseCase(MaintenanceCenterRepository maintenanceCenterRepository) {
         this.maintenanceCenterRepository = maintenanceCenterRepository;
     }
 

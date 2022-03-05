@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.app.cms.R;
 import com.app.cms.model.MaintenanceCenter;
 import com.app.cms.presentation.Constants;
-import com.app.cms.presentation.viewmodels.GetCenterViewModel;
+import com.app.cms.presentation.viewmodels.RetrieveCenterViewModel;
 
 
 public class MaintenanceCenterHomeActivity extends AppCompatActivity {
@@ -32,9 +32,9 @@ public class MaintenanceCenterHomeActivity extends AppCompatActivity {
         //get current maintenance center (true is temporary)
         if (true) {
             String uId = "hanan";
-            GetCenterViewModel getCenterViewModel = ViewModelProviders.of(this).get(GetCenterViewModel.class);
-            getCenterViewModel.getCenterById(uId);
-            getCenterViewModel.getMaintenanceCenterLiveData().observe(this, center -> {
+            RetrieveCenterViewModel retrieveCenterViewModel = ViewModelProviders.of(this).get(RetrieveCenterViewModel.class);
+            retrieveCenterViewModel.getCenterById(uId);
+            retrieveCenterViewModel.getMaintenanceCenterLiveData().observe(this, center -> {
                 if (center != null) {
                     this.center = center;
                     String centerName = center.getName();

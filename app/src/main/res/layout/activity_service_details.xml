@@ -52,7 +52,7 @@
         android:layout_marginEnd="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/servicesListRecyclerView"
+        android:id="@+id/centerListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

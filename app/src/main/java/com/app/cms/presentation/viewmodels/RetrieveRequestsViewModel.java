@@ -22,6 +22,10 @@ public class RetrieveRequestsViewModel extends ViewModel {
         retrieveRequestsUseCase.executeByCenterId(centerId, serviceRequestsMutableLiveData);
     }
 
+    public void getServiceRequestsByClientPhone(String phoneNumber) {
+        retrieveRequestsUseCase.executeByClientPhone(phoneNumber, serviceRequestsMutableLiveData);
+    }
+
     public MutableLiveData<List<ServiceRequest>> getServiceRequestsLiveData() {
         return serviceRequestsMutableLiveData;
     }

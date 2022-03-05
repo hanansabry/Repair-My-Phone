@@ -18,4 +18,8 @@ public class RetrieveRequestsUseCase {
     public void executeByCenterId(String centerId, MutableLiveData<List<ServiceRequest>> serviceRequestListMutableLiveData) {
         serviceRequestsRepository.retrieveServiceRequestByCenterId(centerId, serviceRequestListMutableLiveData);
     }
+
+    public void executeByClientPhone(String phoneNumber, MutableLiveData<List<ServiceRequest>> serviceRequestListMutableLiveData) {
+        serviceRequestsRepository.retrieveServiceRequestsByClientPhone(phoneNumber, serviceRequestListMutableLiveData);
+    }
 }

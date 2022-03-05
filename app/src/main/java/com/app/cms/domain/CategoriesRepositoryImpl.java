@@ -18,8 +18,10 @@ public class CategoriesRepositoryImpl implements CategoriesRepository {
     public void retrieveAllCategories(MutableLiveData<List<Category>> categoryListLiveData) {
         List<Category> categoryList = new ArrayList<>();
         Category c1 = new Category();
+        c1.setId("c1");
         c1.setName("Cat1");
         Category c2 = new Category();
+        c2.setId("c2");
         c2.setName("Cat2");
         categoryList.add(c1);
         categoryList.add(c2);

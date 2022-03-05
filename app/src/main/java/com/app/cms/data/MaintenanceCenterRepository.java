@@ -17,4 +17,6 @@ public interface MaintenanceCenterRepository {
     void retrieveAllCenters(MutableLiveData<List<MaintenanceCenter>> allCentersLiveData);
 
     void retrieveCenterById(String uId, MutableLiveData<MaintenanceCenter> centerMutableLiveData);
+
+    void retrieveCentersByCategoryServiceId(String categoryId, String serviceId, MutableLiveData<List<MaintenanceCenter>> centersListMutableLiveData);
 }

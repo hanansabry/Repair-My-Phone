@@ -120,7 +120,7 @@ public class MaintenanceCenterRegisterationActivity extends AppCompatActivity {
     private void initialCategoriesSpinner() {
         ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
         retrieveCategoriesViewModel.retrieveCategories();
-        retrieveCategoriesViewModel.getCategories().observe(this, categories -> {
+        retrieveCategoriesViewModel.getCategoriesLiveData().observe(this, categories -> {
             ArrayList<String> categoriesNames = new ArrayList<>();
             if ( categories == null ||  categories.isEmpty()) {
                 Toast.makeText(this, "Other Category", Toast.LENGTH_SHORT).show();

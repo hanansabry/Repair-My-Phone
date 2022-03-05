@@ -10,13 +10,13 @@ import com.app.cms.domain.ServiceRequestsRepositoryImpl;
 import com.app.cms.domain.ServicesRepositoryImpl;
 import com.app.cms.domain.usecase.AddCenterUseCase;
 import com.app.cms.domain.usecase.AddServiceUseCase;
-import com.app.cms.domain.usecase.GetCenterUseCase;
+import com.app.cms.domain.usecase.RetrieveCenterUseCase;
 import com.app.cms.domain.usecase.LoginUseCase;
 import com.app.cms.domain.usecase.RegisterUseCase;
 import com.app.cms.domain.usecase.RetrieveCategoriesUseCase;
+import com.app.cms.domain.usecase.RetrieveCentersListUseCase;
 import com.app.cms.domain.usecase.RetrieveRequestsUseCase;
 import com.app.cms.domain.usecase.RetrieveServicesUseCase;
-import com.app.cms.presentation.viewmodels.RetrieveCategoriesViewModel;
 
 public class Injection {
     public static RegisterUseCase getRegisterUseCase() {
@@ -43,8 +43,8 @@ public class Injection {
         return new AddCenterUseCase(getMaintenanceCenterRepository());
     }
 
-    public static GetCenterUseCase getCenterUseCase() {
-        return new GetCenterUseCase(getMaintenanceCenterRepository());
+    public static RetrieveCenterUseCase getCenterUseCase() {
+        return new RetrieveCenterUseCase(getMaintenanceCenterRepository());
     }
 
 
@@ -66,5 +66,9 @@ public class Injection {
 
     private static ServiceRequestsRepository getServicesRequestsRepository() {
         return new ServiceRequestsRepositoryImpl();
+    }
+
+    public static RetrieveCentersListUseCase getRetrieveCentersUseCase() {
+        return new RetrieveCentersListUseCase(getMaintenanceCenterRepository());
     }
 }

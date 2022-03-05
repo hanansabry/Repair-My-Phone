@@ -9,4 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 public interface ServiceRequestsRepository {
 
     void retrieveServiceRequestByCenterId(String centerId, MutableLiveData<List<ServiceRequest>> serviceRequestListMutableLiveData);
+
+    void retrieveServiceRequestsByClientPhone(String phoneNUmber, MutableLiveData<List<ServiceRequest>> serviceRequestListMutableLiveData);
 }

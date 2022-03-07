@@ -6,6 +6,9 @@ public class LocationAttr {
     private double lang;
     private double lat;
 
+    public LocationAttr() {
+    }
+
     public LocationAttr(double lang, double lat) {
         this.lang = lang;
         this.lat = lat;

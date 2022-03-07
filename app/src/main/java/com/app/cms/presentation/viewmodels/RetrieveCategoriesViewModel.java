@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModel;
 public class RetrieveCategoriesViewModel extends ViewModel {
 
     private final RetrieveCategoriesUseCase retrieveCategoriesUseCase;
-    private MutableLiveData<List<Category>> categoryListMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<String>> categoryListMutableLiveData = new MutableLiveData<>();
 
     public RetrieveCategoriesViewModel() {
         retrieveCategoriesUseCase = Injection.getRetrieveCategoriesUseCase();
@@ -22,7 +22,7 @@ public class RetrieveCategoriesViewModel extends ViewModel {
         retrieveCategoriesUseCase.execute(categoryListMutableLiveData);
     }
 
-    public MutableLiveData<List<Category>> getCategoriesLiveData() {
+    public MutableLiveData<List<String>> getCategoriesLiveData() {
         return categoryListMutableLiveData;
     }
 }

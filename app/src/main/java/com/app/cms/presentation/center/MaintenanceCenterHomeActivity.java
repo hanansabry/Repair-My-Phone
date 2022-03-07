@@ -6,6 +6,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.app.cms.R;
 import com.app.cms.model.MaintenanceCenter;
 import com.app.cms.presentation.Constants;
 import com.app.cms.presentation.viewmodels.RetrieveCenterViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MaintenanceCenterHomeActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class MaintenanceCenterHomeActivity extends AppCompatActivity {
     @BindView(R.id.centerNameTextView)
     TextView centerNameTextView;
     private MaintenanceCenter center;
+    private String uId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +32,13 @@ public class MaintenanceCenterHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_maintenance_center_home);
         ButterKnife.bind(this);
 
+        ProgressDialog pd = new ProgressDialog(this);
+        pd.setMessage("loading");
+        pd.show();
+
         //get current maintenance center (true is temporary)
-        if (true) {
-            String uId = "hanan";
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             RetrieveCenterViewModel retrieveCenterViewModel = ViewModelProviders.of(this).get(RetrieveCenterViewModel.class);
             retrieveCenterViewModel.getCenterById(uId);
             retrieveCenterViewModel.getMaintenanceCenterLiveData().observe(this, center -> {
@@ -44,6 +51,7 @@ public class MaintenanceCenterHomeActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(this, LoginActivity.class));
                 }
+                pd.hide();
             });
         } else {
             //if user not logged in
@@ -61,6 +69,7 @@ public class MaintenanceCenterHomeActivity extends AppCompatActivity {
     public void onServicesClicked() {
         Intent intent = new Intent(this, ServicesActivity.class);
         intent.putExtra(Constants.CATEGORY_NAME, center.getCategory());
+        intent.putExtra(Constants.CENTER_ID, uId);
         startActivity(intent);
     }
 

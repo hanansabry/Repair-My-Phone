@@ -36,7 +36,7 @@ public class RepairCarHomeActivity extends AppCompatActivity {
     Spinner servicesSpinner;
     @BindView(R.id.editTextPhone)
     TextInputEditText editTextPhone;
-    private Category selectedCategory;
+    private String selectedCategory;
     private Service selectedService;
 
     @Override
@@ -53,21 +53,17 @@ public class RepairCarHomeActivity extends AppCompatActivity {
         retrieveServicesViewModel.getServiceListLiveData().observe(this, this::initiateServicesSpinner);
     }
 
-    private void initiateCategoriesSpinner(List<Category> categories) {
+    private void initiateCategoriesSpinner(List<String> categories) {
         ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
-        ArrayList<String> categoriesNames = new ArrayList<>();
-        for (Category category : categories) {
-            categoriesNames.add(category.getName());
-        }
-        categoriesAdapter.addAll(categoriesNames);
+        categoriesAdapter.addAll(categories);
         categoriesSpinner.setAdapter(categoriesAdapter);
         categoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedCategory = categories.get(position);
-                Toast.makeText(RepairCarHomeActivity.this, selectedCategory.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RepairCarHomeActivity.this, selectedCategory, Toast.LENGTH_SHORT).show();
                 //get services by selected category
-                retrieveServicesViewModel.retrieveServicesByCategoryId(selectedCategory.getId());
+                retrieveServicesViewModel.retrieveServicesByCategoryId(selectedCategory);
             }
 
             @Override
@@ -114,7 +110,7 @@ public class RepairCarHomeActivity extends AppCompatActivity {
             Toast.makeText(this, "You must select category and service", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(this, ServiceDetailsActivity.class);
-            intent.putExtra(Constants.CATEGORY_ID, selectedCategory.getId());
+            intent.putExtra(Constants.CATEGORY_NAME, selectedCategory);
             intent.putExtra(Constants.SERVICE, selectedService);
 //            intent.putExtra(Constants.SERVICE_ID, selectedService.getId());
 //            intent.putExtra(Constants.SERVICE_NAME, selectedService.getName());

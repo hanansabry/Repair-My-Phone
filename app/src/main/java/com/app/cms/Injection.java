@@ -8,6 +8,7 @@ import com.app.cms.domain.CategoriesRepositoryImpl;
 import com.app.cms.domain.MaintenanceCenterRepositoryImpl;
 import com.app.cms.domain.ServiceRequestsRepositoryImpl;
 import com.app.cms.domain.ServicesRepositoryImpl;
+import com.app.cms.domain.usecase.AddCategoryUseCase;
 import com.app.cms.domain.usecase.AddCenterUseCase;
 import com.app.cms.domain.usecase.AddServiceUseCase;
 import com.app.cms.domain.usecase.RetrieveCenterUseCase;
@@ -70,5 +71,9 @@ public class Injection {
 
     public static RetrieveCentersListUseCase getRetrieveCentersUseCase() {
         return new RetrieveCentersListUseCase(getMaintenanceCenterRepository());
+    }
+
+    public static AddCategoryUseCase getAddCategoryUseCase() {
+        return new AddCategoryUseCase(getCategoriesRepository());
     }
 }

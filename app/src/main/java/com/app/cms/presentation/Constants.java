@@ -11,4 +11,7 @@ public class Constants {
     public static final String SERVICE_NAME = "service_name";
     public static final String SERVICE = "service";
     public static final String PHONE_NUMBER = "phone_number";
+    public static final String CENTERS_NODE = "centers";
+    public static final String SERVICES_NODE = "services";
+    public static final String CATEGORIES_NODE = "categories";
 }

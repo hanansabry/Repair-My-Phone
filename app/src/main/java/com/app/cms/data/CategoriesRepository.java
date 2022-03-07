@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 public interface CategoriesRepository {
 
-    void addNewCategory(Category category, MutableLiveData<Boolean> success);
+    void addNewCategory(String categoryName, MutableLiveData<Boolean> success);
 
-    void retrieveAllCategories(MutableLiveData<List<Category>> categoryListLiveData);
+    void retrieveAllCategories(MutableLiveData<List<String>> categoryListLiveData);
 }

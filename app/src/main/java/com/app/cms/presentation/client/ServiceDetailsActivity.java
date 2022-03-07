@@ -41,14 +41,14 @@ public class ServiceDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_service_details);
         ButterKnife.bind(this);
 
-        String categoryId = getIntent().getStringExtra(Constants.CATEGORY_ID);
+        String categoryName = getIntent().getStringExtra(Constants.CATEGORY_NAME);
         service = (Service) getIntent().getExtras().get(Constants.SERVICE);
 
         serviceNameTextView.setText(service.getName());
         showDetailsButton.setVisibility(View.INVISIBLE);
 
         RetrieveCentersListViewModel retrieveCentersListViewModel = ViewModelProviders.of(this).get(RetrieveCentersListViewModel.class);
-        retrieveCentersListViewModel.retrieveCentersByCategoryServiceId(categoryId, service.getId());
+        retrieveCentersListViewModel.retrieveCentersByCategoryServiceId(categoryName, service.getId());
         retrieveCentersListViewModel.getCentersListLiveData().observe(this, this::initiateCenterListRecyclerView);
     }
 

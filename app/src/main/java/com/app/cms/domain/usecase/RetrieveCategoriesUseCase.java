@@ -15,7 +15,7 @@ public class RetrieveCategoriesUseCase {
         this.categoriesRepository = categoriesRepository;
     }
 
-    public void execute(MutableLiveData<List<Category>> categoryListMutableLiveData) {
+    public void execute(MutableLiveData<List<String>> categoryListMutableLiveData) {
         categoriesRepository.retrieveAllCategories(categoryListMutableLiveData);
     }
 }

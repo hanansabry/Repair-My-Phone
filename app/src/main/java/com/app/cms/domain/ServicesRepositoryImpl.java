@@ -1,84 +1,82 @@
 package com.app.cms.domain;
 
 import com.app.cms.data.ServicesRepository;
+import com.app.cms.model.MaintenanceCenter;
 import com.app.cms.model.Service;
+import com.app.cms.presentation.Constants;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 public class ServicesRepositoryImpl implements ServicesRepository {
+
+    private final DatabaseReference servicesReference = FirebaseDatabase.getInstance().getReference(Constants.SERVICES_NODE);
+    private final DatabaseReference centersReference = FirebaseDatabase.getInstance().getReference(Constants.CENTERS_NODE);
+
     @Override
-    public void addNewService(Service service, MutableLiveData<Boolean> success) {
-        if (service != null) {
-            success.setValue(true);
-        } else {
-            success.setValue(false);
-        }
+    public void addNewService(String centerId, Service service, MutableLiveData<Boolean> success) {
+        centersReference.child(centerId).child("services").push().setValue(service)
+                .addOnCompleteListener(task -> success.setValue(task.isSuccessful()));
     }
 
     @Override
     public void retrieveServicesByCenter(String centerId, MutableLiveData<List<Service>> serviceListLiveData) {
-        if (centerId.equals("hanan")) {
-            List<Service> services = new ArrayList<>();
-            Service s1 = new Service();
-            s1.setName("Service 1");
-            s1.setPriceRate(12.5);
+        centersReference.child(centerId).child("services").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Service> services = new ArrayList<>();
+                for (DataSnapshot servicesSnapshot : snapshot.getChildren()) {
+                    Service service = servicesSnapshot.getValue(Service.class);
+                    services.add(service);
+                }
+                serviceListLiveData.setValue(services);
+            }
 
-            Service s2 = new Service();
-            s2.setName("Service 2");
-            s2.setPriceRate(48.4);
-
-            Service s3 = new Service();
-            s3.setName("Service 3");
-            s3.setPriceRate(125.3);
-
-            Service s4 = new Service();
-            s4.setName("Service 4");
-            s4.setPriceRate(20.5);
-
-            services.add(s1);
-            services.add(s2);
-            services.add(s3);
-            services.add(s4);
-            serviceListLiveData.setValue(services);
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                serviceListLiveData.setValue(null);
+            }
+        });
     }
 
     @Override
-    public void retrieveServicesByCategory(String categoryId, MutableLiveData<List<Service>> serviceListLiveData) {
-        if (categoryId.equals("c1")) {
-            List<Service> services = new ArrayList<>();
-            Service s1 = new Service();
-            s1.setId("s1");
-            s1.setName("Service 1");
-            s1.setPriceRate(12.5);
+    public void retrieveServicesByCategory(String categoryName, MutableLiveData<List<Service>> serviceListLiveData) {
+        centersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Service> services = new ArrayList<>();
+                for (DataSnapshot centerSnapshot : snapshot.getChildren()) {
+                    MaintenanceCenter center = centerSnapshot.getValue(MaintenanceCenter.class);
+                    if (center.getCategory().equals(categoryName)) {
+                        for (DataSnapshot servicesSnapshot : centerSnapshot.getChildren()) {
+                            if (servicesSnapshot.getKey().equals("services")) {
+                                for (DataSnapshot serSnapshot : servicesSnapshot.getChildren()) {
+                                    Service service = serSnapshot.getValue(Service.class);
+                                    service.setId(serSnapshot.getKey());
+                                    services.add(service);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                serviceListLiveData.setValue(services);
+            }
 
-            Service s3 = new Service();
-            s3.setId("s3");
-            s3.setName("Service 3");
-            s3.setPriceRate(125.3);
-
-            services.add(s1);
-            services.add(s3);
-            serviceListLiveData.setValue(services);
-        } else if (categoryId.equals("c2")) {
-            List<Service> services = new ArrayList<>();
-
-            Service s2 = new Service();
-            s2.setId("s2");
-            s2.setName("Service 2");
-            s2.setPriceRate(48.4);
-
-            Service s4 = new Service();
-            s4.setId("s4");
-            s4.setName("Service 4");
-            s4.setPriceRate(20.5);
-
-            services.add(s2);
-            services.add(s4);
-            serviceListLiveData.setValue(services);
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                serviceListLiveData.setValue(null);
+            }
+        });
     }
 }

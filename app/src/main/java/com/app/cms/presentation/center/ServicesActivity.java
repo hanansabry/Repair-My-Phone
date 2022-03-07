@@ -27,7 +27,9 @@ public class ServicesActivity extends AppCompatActivity {
     RecyclerView servicesRecyclerView;
 
     private AddServiceViewModel addServiceViewModel;
-    private String catgoryName;
+    private String categoryName;
+    private String centerId;
+    private ServicesAdapter servicesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +37,18 @@ public class ServicesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_services);
         ButterKnife.bind(this);
 
-        catgoryName = getIntent().getStringExtra(Constants.CATEGORY_NAME);
+        categoryName = getIntent().getStringExtra(Constants.CATEGORY_NAME);
+        centerId = getIntent().getStringExtra(Constants.CENTER_ID);
+
         RetrieveServicesViewModel retrieveServicesViewModel = ViewModelProviders.of(this).get(RetrieveServicesViewModel.class);
         //get center id
-        retrieveServicesViewModel.retrieveServicesByCenterId("hanan");
+        retrieveServicesViewModel.retrieveServicesByCenterId(centerId);
         retrieveServicesViewModel.getServiceListLiveData().observe(this, this::initiateServicesRecyclerView);
 
         addServiceViewModel = ViewModelProviders.of(this).get(AddServiceViewModel.class);
         addServiceViewModel.getSuccess().observe(this, success -> {
             if (success) {
+                servicesAdapter.notifyDataSetChanged();
                 Toast.makeText(this, "Service is added successfully", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Error, please try again", Toast.LENGTH_SHORT).show();
@@ -52,7 +57,7 @@ public class ServicesActivity extends AppCompatActivity {
     }
 
     private void initiateServicesRecyclerView(List<Service> services) {
-        ServicesAdapter servicesAdapter = new ServicesAdapter(services);
+        servicesAdapter = new ServicesAdapter(services);
         servicesRecyclerView.setAdapter(servicesAdapter);
         servicesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -68,8 +73,8 @@ public class ServicesActivity extends AppCompatActivity {
             Service service = new Service();
             service.setName(serviceName);
             service.setPriceRate(Double.parseDouble(priceRate));
-            service.setCategory(catgoryName);
-            addServiceViewModel.addNewService(service);
+            service.setCategory(categoryName);
+            addServiceViewModel.addNewService(centerId, service);
         });
         addServiceDialog.show();
     }

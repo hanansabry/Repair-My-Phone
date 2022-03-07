@@ -13,7 +13,7 @@ public class AddServiceUseCase {
         this.servicesRepository = servicesRepository;
     }
 
-    public void execute(Service service, MutableLiveData<Boolean> success) {
-        servicesRepository.addNewService(service, success);
+    public void execute(String centerId, Service service, MutableLiveData<Boolean> success) {
+        servicesRepository.addNewService(centerId, service, success);
     }
 }

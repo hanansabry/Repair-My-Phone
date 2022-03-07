@@ -16,8 +16,8 @@ public class AddServiceViewModel extends ViewModel {
         addServiceUseCase = Injection.getAddServiceUseCase();
     }
 
-    public void addNewService(Service service) {
-        addServiceUseCase.execute(service, success);
+    public void addNewService(String centerId, Service service) {
+        addServiceUseCase.execute(centerId, service, success);
     }
 
     public MutableLiveData<Boolean> getSuccess() {

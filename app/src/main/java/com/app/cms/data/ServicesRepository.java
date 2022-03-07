@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 public interface ServicesRepository {
 
-    void addNewService(Service service, MutableLiveData<Boolean> success);
+    void addNewService(String centerId, Service service, MutableLiveData<Boolean> success);
 
     void retrieveServicesByCenter(String centerId, MutableLiveData<List<Service>> serviceListLiveData);
 

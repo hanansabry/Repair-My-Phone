@@ -8,6 +8,7 @@ import com.app.cms.presentation.center.LoginActivity;
 import com.app.cms.presentation.center.MaintenanceCenterHomeActivity;
 import com.app.cms.presentation.center.MaintenanceCenterRegisterationActivity;
 import com.app.cms.presentation.client.RepairCarHomeActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
@@ -29,7 +30,11 @@ public class StartActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnCenter)
     public void onLoginAsCenterClicked() {
-        startActivity(new Intent(this, LoginActivity.class));
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            startActivity(new Intent(this, MaintenanceCenterHomeActivity.class));
+        } else {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 
     @OnClick(R.id.register_now_text)

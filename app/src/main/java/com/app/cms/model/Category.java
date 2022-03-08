@@ -6,7 +6,6 @@ public class Category {
 
     private String id;
     private String name;
-    private List<Service> services;
 
     public String getId() {
         return id;
@@ -24,11 +23,4 @@ public class Category {
         this.name = name;
     }
 
-    public List<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(List<Service> services) {
-        this.services = services;
-    }
 }

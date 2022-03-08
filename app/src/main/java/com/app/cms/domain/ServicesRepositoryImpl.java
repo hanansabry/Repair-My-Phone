@@ -11,7 +11,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -48,22 +50,23 @@ public class ServicesRepositoryImpl implements ServicesRepository {
     }
 
     @Override
-    public void retrieveServicesByCategory(String categoryName, MutableLiveData<List<Service>> serviceListLiveData) {
+    public void retrieveServicesByCategory(String categoryName, MutableLiveData<List<String>> serviceListLiveData) {
         centersReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Service> services = new ArrayList<>();
+                Set<String> servicesNamesSet = new HashSet<>();
                 for (DataSnapshot centerSnapshot : snapshot.getChildren()) {
                     MaintenanceCenter center = centerSnapshot.getValue(MaintenanceCenter.class);
                     if (center.getCategory().equals(categoryName)) {
                         if (center.getServices() != null) {
                             for (String key : center.getServices().keySet()) {
-                                services.add(center.getServices().get(key));
+                                servicesNamesSet.add(center.getServices().get(key).getName());
                             }
                         }
                     }
                 }
-                serviceListLiveData.setValue(services);
+                ArrayList<String> serviceList = new ArrayList<>(servicesNamesSet);
+                serviceListLiveData.setValue(serviceList);
             }
 
             @Override

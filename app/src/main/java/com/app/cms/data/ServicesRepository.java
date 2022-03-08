@@ -12,5 +12,5 @@ public interface ServicesRepository {
 
     void retrieveServicesByCenter(String centerId, MutableLiveData<List<Service>> serviceListLiveData);
 
-    void retrieveServicesByCategory(String categoryId, MutableLiveData<List<Service>> serviceListLiveData);
+    void retrieveServicesByCategory(String categoryId, MutableLiveData<List<String>> serviceListLiveData);
 }

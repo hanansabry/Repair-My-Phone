@@ -38,7 +38,7 @@ public class RepairCarHomeActivity extends AppCompatActivity {
     @BindView(R.id.editTextPhone)
     TextInputEditText editTextPhone;
     private String selectedCategory;
-    private Service selectedService;
+    private String selectedService;
     private ProgressDialog pd;
 
     @Override
@@ -56,7 +56,7 @@ public class RepairCarHomeActivity extends AppCompatActivity {
 
         retrieveCategoriesViewModel.retrieveCategories();
         retrieveCategoriesViewModel.getCategoriesLiveData().observe(this, this::initiateCategoriesSpinner);
-        retrieveServicesViewModel.getServiceListLiveData().observe(this, this::initiateServicesSpinner);
+        retrieveServicesViewModel.getServiceNamesListMutableLiveData().observe(this, this::initiateServicesSpinner);
     }
 
     private void initiateCategoriesSpinner(List<String> categories) {
@@ -82,13 +82,10 @@ public class RepairCarHomeActivity extends AppCompatActivity {
         }
     }
 
-    private void initiateServicesSpinner(List<Service> services) {
+    private void initiateServicesSpinner(List<String> services) {
         ArrayAdapter<String> servicesAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
-        ArrayList<String> servicesNames = new ArrayList<>();
-        for (Service service : services) {
-            servicesNames.add(service.getName());
-        }
-        servicesAdapter.addAll(servicesNames);
+
+        servicesAdapter.addAll(services);
         servicesSpinner.setAdapter(servicesAdapter);
         servicesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -121,7 +118,7 @@ public class RepairCarHomeActivity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(this, ServiceDetailsActivity.class);
             intent.putExtra(Constants.CATEGORY_NAME, selectedCategory);
-            intent.putExtra(Constants.SERVICE, selectedService);
+            intent.putExtra(Constants.SERVICE_NAME, selectedService);
 //            intent.putExtra(Constants.SERVICE_ID, selectedService.getId());
 //            intent.putExtra(Constants.SERVICE_NAME, selectedService.getName());
             startActivity(intent);

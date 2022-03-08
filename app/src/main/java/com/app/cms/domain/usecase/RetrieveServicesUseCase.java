@@ -19,7 +19,7 @@ public class RetrieveServicesUseCase {
         servicesRepository.retrieveServicesByCenter(centerId, serviceListLiveData);
     }
 
-    public void executeByCategoryId(String categoryId, MutableLiveData<List<Service>> serviceListLiveData) {
+    public void executeByCategoryId(String categoryId, MutableLiveData<List<String>> serviceListLiveData) {
         servicesRepository.retrieveServicesByCategory(categoryId, serviceListLiveData);
     }
 }

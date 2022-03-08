@@ -241,7 +241,7 @@ public class ServiceRequestActivity extends AppCompatActivity {
             addServiceRequestViewModel.centerSendOfferOfServiceRequest(serviceRequest);
         } else if (status.equals(Constants.ACCEPT_REJECT)) {
             if (isCenter) {
-                serviceRequest.setStatus("Delivered");
+                serviceRequest.setStatus(Constants.DELIVERED);
                 addServiceRequestViewModel.clientAcceptRejectOffer(serviceRequest, isCenter);
             } else {
                 serviceRequest.setFeedback(feedbackEditText.getText().toString());

@@ -33,7 +33,7 @@ public class ServiceDetailsActivity extends AppCompatActivity {
     RecyclerView centerListRecyclerView;
     @BindView(R.id.showDetailsButton)
     ImageButton showDetailsButton;
-    private Service service;
+    private String service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,21 +42,21 @@ public class ServiceDetailsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         String categoryName = getIntent().getStringExtra(Constants.CATEGORY_NAME);
-        service = (Service) getIntent().getExtras().get(Constants.SERVICE);
+        service = getIntent().getStringExtra(Constants.SERVICE_NAME);
 
-        serviceNameTextView.setText(service.getName());
+        serviceNameTextView.setText(service);
         showDetailsButton.setVisibility(View.INVISIBLE);
 
         RetrieveCentersListViewModel retrieveCentersListViewModel = ViewModelProviders.of(this).get(RetrieveCentersListViewModel.class);
-        retrieveCentersListViewModel.retrieveCentersByCategoryServiceId(categoryName, service.getName());
+        retrieveCentersListViewModel.retrieveCentersByCategoryServiceId(categoryName, service);
         retrieveCentersListViewModel.getCentersListLiveData().observe(this, this::initiateCenterListRecyclerView);
     }
 
     private void initiateCenterListRecyclerView(List<MaintenanceCenter> maintenanceCenters) {
-        ServiceAvailableCentersAdapter centersAdapter = new ServiceAvailableCentersAdapter(maintenanceCenters, service.getName(), center -> {
+        ServiceAvailableCentersAdapter centersAdapter = new ServiceAvailableCentersAdapter(maintenanceCenters, service, center -> {
             Intent intent = new Intent(this, ServiceRequestActivity.class);
             intent.putExtra(Constants.CENTER_ID, center.getId());
-            intent.putExtra(Constants.SERVICE_NAME, service.getName());
+            intent.putExtra(Constants.SERVICE_NAME, service);
             intent.putExtra(Constants.STATUS, Constants.NEW);
             startActivity(intent);
         });

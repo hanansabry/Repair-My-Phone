@@ -1,5 +1,6 @@
 package com.app.cms.presentation.client;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -38,12 +39,17 @@ public class RepairCarHomeActivity extends AppCompatActivity {
     TextInputEditText editTextPhone;
     private String selectedCategory;
     private Service selectedService;
+    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repair_car_home);
         ButterKnife.bind(this);
+
+        pd = new ProgressDialog(this);
+        pd.setMessage("loading");
+        pd.show();
 
         retrieveCategoriesViewModel = ViewModelProviders.of(this).get(RetrieveCategoriesViewModel.class);
         retrieveServicesViewModel = ViewModelProviders.of(this).get(RetrieveServicesViewModel.class);
@@ -54,23 +60,26 @@ public class RepairCarHomeActivity extends AppCompatActivity {
     }
 
     private void initiateCategoriesSpinner(List<String> categories) {
-        ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
-        categoriesAdapter.addAll(categories);
-        categoriesSpinner.setAdapter(categoriesAdapter);
-        categoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedCategory = categories.get(position);
-                Toast.makeText(RepairCarHomeActivity.this, selectedCategory, Toast.LENGTH_SHORT).show();
-                //get services by selected category
-                retrieveServicesViewModel.retrieveServicesByCategoryId(selectedCategory);
-            }
+        if (categories == null || categories.isEmpty()) {
+            pd.hide();
+        } else {
+            ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
+            categoriesAdapter.addAll(categories);
+            categoriesSpinner.setAdapter(categoriesAdapter);
+            categoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    selectedCategory = categories.get(position);
+                    //get services by selected category
+                    retrieveServicesViewModel.retrieveServicesByCategoryId(selectedCategory);
+                }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     private void initiateServicesSpinner(List<Service> services) {
@@ -92,6 +101,7 @@ public class RepairCarHomeActivity extends AppCompatActivity {
 
             }
         });
+        pd.hide();
     }
 
     @OnClick(R.id.btnBack)

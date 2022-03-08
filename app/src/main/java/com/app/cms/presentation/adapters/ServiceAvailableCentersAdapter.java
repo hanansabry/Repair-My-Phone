@@ -21,12 +21,12 @@ public class ServiceAvailableCentersAdapter extends RecyclerView.Adapter<Service
 
     private List<MaintenanceCenter> centerList;
     private OnServiceCenterClickedListener listener;
-    private Service service;
+    private String serviceName;
 
-    public ServiceAvailableCentersAdapter(List<MaintenanceCenter> centerList, Service service, OnServiceCenterClickedListener listener) {
+    public ServiceAvailableCentersAdapter(List<MaintenanceCenter> centerList, String serviceName, OnServiceCenterClickedListener listener) {
         this.centerList = centerList;
         this.listener = listener;
-        this.service = service;
+        this.serviceName = serviceName;
     }
 
     @NonNull
@@ -42,8 +42,19 @@ public class ServiceAvailableCentersAdapter extends RecyclerView.Adapter<Service
         holder.centerNameTextView.setText(center.getName());
         holder.regionTextView.setText(center.getRegion());
         holder.phoneTextView.setText(center.getPhone());
+        Service service = getServiceFromCenter(center);
         holder.priceRateTextView.setText(String.format("%s", service.getPriceRate()));
         holder.showDetailsButton.setOnClickListener(v -> listener.onCenterClicked(center));
+    }
+
+    private Service getServiceFromCenter(MaintenanceCenter center) {
+        for (String key : center.getServices().keySet()) {
+            Service s = center.getServices().get(key);
+            if (serviceName.equals(s.getName())) {
+                return s;
+            }
+        }
+        return null;
     }
 
     @Override

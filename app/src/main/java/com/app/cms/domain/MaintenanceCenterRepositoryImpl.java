@@ -4,9 +4,6 @@ import com.app.cms.data.MaintenanceCenterRepository;
 import com.app.cms.model.MaintenanceCenter;
 import com.app.cms.model.Service;
 import com.app.cms.presentation.Constants;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -61,7 +57,7 @@ public class MaintenanceCenterRepositoryImpl implements MaintenanceCenterReposit
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<MaintenanceCenter> centers = new ArrayList<>();
                 for (DataSnapshot centerSnapshot: dataSnapshot.getChildren()) {
-                    MaintenanceCenter center = new MaintenanceCenter();
+                    MaintenanceCenter center = centerSnapshot.getValue(MaintenanceCenter.class);
                     center.setId(centerSnapshot.getKey());
                     centers.add(center);
                 }
@@ -83,12 +79,6 @@ public class MaintenanceCenterRepositoryImpl implements MaintenanceCenterReposit
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 MaintenanceCenter center = dataSnapshot.getValue(MaintenanceCenter.class);
                 center.setId(dataSnapshot.getKey());
-                for (DataSnapshot centerSnapshot : dataSnapshot.getChildren()) {
-                    if (centerSnapshot.getKey().equals("services")) {
-                        HashMap<String, Service> serviceHashMap = (HashMap<String, Service>) centerSnapshot.getValue();
-                        serviceHashMap.size();
-                    }
-                }
                 centerMutableLiveData.setValue(center);
             }
 
@@ -100,20 +90,32 @@ public class MaintenanceCenterRepositoryImpl implements MaintenanceCenterReposit
     }
 
     @Override
-    public void retrieveCentersByCategoryServiceId(String categoryId, String serviceId, MutableLiveData<List<MaintenanceCenter>> centersListMutableLiveData) {
+    public void retrieveCentersByCategoryServiceId(String categoryId, String serviceName, MutableLiveData<List<MaintenanceCenter>> centersListMutableLiveData) {
         DatabaseReference databaseReference = database.getReference(Constants.CENTERS_NODE);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<MaintenanceCenter> centers = new ArrayList<>();
-                for (DataSnapshot centerSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot centerSnapshot : dataSnapshot.getChildren()) {
                     MaintenanceCenter center = centerSnapshot.getValue(MaintenanceCenter.class);
+                    if (center.getCategory().equals(categoryId)) {
+                        if (center.getServices() != null) {
+                            for (String key : center.getServices().keySet()) {
+                                Service service = center.getServices().get(key);
+                                if (service.getName().equals(serviceName)) {
+                                    centers.add(center);
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
+                centersListMutableLiveData.setValue(centers);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-//                allCentersLiveData.setValue(null);
+                centersListMutableLiveData.setValue(null);
             }
         });
     }

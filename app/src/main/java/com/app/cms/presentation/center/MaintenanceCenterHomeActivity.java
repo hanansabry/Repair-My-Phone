@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.app.cms.R;
 import com.app.cms.model.MaintenanceCenter;
 import com.app.cms.presentation.Constants;
+import com.app.cms.presentation.StartActivity;
 import com.app.cms.presentation.viewmodels.RetrieveCenterViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -77,6 +78,14 @@ public class MaintenanceCenterHomeActivity extends AppCompatActivity {
     public void onRequestsView() {
         Intent intent = new Intent(this, RequestsActivity.class);
         intent.putExtra(Constants.CENTER_ID, center.getId());
-        startActivity(new Intent(this, RequestsActivity.class));
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btnLogout)
+    public void onLogoutClicked() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, StartActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

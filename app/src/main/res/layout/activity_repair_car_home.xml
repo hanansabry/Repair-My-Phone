@@ -183,7 +183,7 @@
                         android:id="@+id/editTextPhone"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:inputType="textPersonName"
+                        android:inputType="phone"
                         android:background="@drawable/corner_light_white"
                         android:gravity="center_vertical"
                         android:textAlignment="viewStart"

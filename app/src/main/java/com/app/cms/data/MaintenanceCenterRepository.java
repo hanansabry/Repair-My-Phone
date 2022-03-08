@@ -1,6 +1,7 @@
 package com.app.cms.data;
 
 import com.app.cms.model.MaintenanceCenter;
+import com.app.cms.model.Service;
 
 import java.util.List;
 
@@ -18,5 +19,5 @@ public interface MaintenanceCenterRepository {
 
     void retrieveCenterById(String uId, MutableLiveData<MaintenanceCenter> centerMutableLiveData);
 
-    void retrieveCentersByCategoryServiceId(String categoryId, String serviceId, MutableLiveData<List<MaintenanceCenter>> centersListMutableLiveData);
+    void retrieveCentersByCategoryServiceId(String categoryId, String serviceName, MutableLiveData<List<MaintenanceCenter>> centersListMutableLiveData);
 }

@@ -1,6 +1,6 @@
 package com.app.cms.model;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class MaintenanceCenter {
 
@@ -12,7 +12,7 @@ public class MaintenanceCenter {
     private String region;
     private LocationAttr location;
     private String category;
-    private List<Service> serviceList;
+    private HashMap<String, Service> services;
 
     public String getId() {
         return id;
@@ -78,11 +78,11 @@ public class MaintenanceCenter {
         this.category = category;
     }
 
-    public List<Service> getServiceList() {
-        return serviceList;
+    public HashMap<String, Service> getServices() {
+        return services;
     }
 
-    public void setServiceList(List<Service> serviceList) {
-        this.serviceList = serviceList;
+    public void setServices(HashMap<String, Service> services) {
+        this.services = services;
     }
 }

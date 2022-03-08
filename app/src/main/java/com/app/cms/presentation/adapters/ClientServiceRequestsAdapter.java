@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.app.cms.R;
 import com.app.cms.model.ServiceRequest;
+import com.app.cms.presentation.Constants;
 
 import java.util.List;
 
@@ -36,9 +37,12 @@ public class ClientServiceRequestsAdapter extends RecyclerView.Adapter<ClientSer
     @Override
     public void onBindViewHolder(@NonNull ClientServiceRequestViewHolder holder, int position) {
         ServiceRequest serviceRequest = serviceRequestList.get(position);
-        holder.centerNameTextView.setText(serviceRequest.getCenter().getName());
+        holder.centerNameTextView.setText(serviceRequest.getCenterName());
         holder.statusTextView.setText(serviceRequest.getStatus());
         holder.showDetailsButton.setOnClickListener(v -> serviceRequestClicked.onServiceRequestClicked(serviceRequest));
+        if (serviceRequest.getStatus().equals(Constants.DELIVERED)) {
+            holder.showDetailsButton.setVisibility(View.GONE);
+        }
     }
 
     @Override

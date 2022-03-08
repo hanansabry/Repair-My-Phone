@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.app.cms.R;
 import com.app.cms.model.ServiceRequest;
+import com.app.cms.presentation.Constants;
 
 import java.util.List;
 
@@ -40,6 +41,9 @@ public class ServicesRequestsAdapter extends RecyclerView.Adapter<ServicesReques
         holder.serviceNameTextView.setText(serviceRequest.getService());
         holder.statusTextView.setText(serviceRequest.getStatus());
         holder.showDetailsButton.setOnClickListener(v -> listener.onServiceRequestItemClicked(serviceRequest));
+        if (serviceRequest.getStatus().equals(Constants.DELIVERED)) {
+            holder.showDetailsButton.setVisibility(View.GONE);
+        }
     }
 
     @Override

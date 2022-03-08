@@ -3,6 +3,7 @@ package com.app.cms.presentation.viewmodels;
 import com.app.cms.Injection;
 import com.app.cms.domain.usecase.RetrieveCentersListUseCase;
 import com.app.cms.model.MaintenanceCenter;
+import com.app.cms.model.Service;
 
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class RetrieveCentersListViewModel extends ViewModel {
         retrieveCentersListUseCase.execute(centersListMutableLiveData);
     }
 
-    public void retrieveCentersByCategoryServiceId(String categoryId, String serviceId) {
-        retrieveCentersListUseCase.executeByCategoryServiceId(categoryId, serviceId, centersListMutableLiveData);
+    public void retrieveCentersByCategoryServiceId(String categoryId, String serviceName) {
+        retrieveCentersListUseCase.executeByCategoryServiceId(categoryId, serviceName, centersListMutableLiveData);
     }
 
     public MutableLiveData<List<MaintenanceCenter>> getCentersListLiveData() {

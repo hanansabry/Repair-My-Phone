@@ -4,8 +4,6 @@ import com.app.cms.data.ServicesRepository;
 import com.app.cms.model.MaintenanceCenter;
 import com.app.cms.model.Service;
 import com.app.cms.presentation.Constants;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,14 +56,9 @@ public class ServicesRepositoryImpl implements ServicesRepository {
                 for (DataSnapshot centerSnapshot : snapshot.getChildren()) {
                     MaintenanceCenter center = centerSnapshot.getValue(MaintenanceCenter.class);
                     if (center.getCategory().equals(categoryName)) {
-                        for (DataSnapshot servicesSnapshot : centerSnapshot.getChildren()) {
-                            if (servicesSnapshot.getKey().equals("services")) {
-                                for (DataSnapshot serSnapshot : servicesSnapshot.getChildren()) {
-                                    Service service = serSnapshot.getValue(Service.class);
-                                    service.setId(serSnapshot.getKey());
-                                    services.add(service);
-                                }
-                                break;
+                        if (center.getServices() != null) {
+                            for (String key : center.getServices().keySet()) {
+                                services.add(center.getServices().get(key));
                             }
                         }
                     }

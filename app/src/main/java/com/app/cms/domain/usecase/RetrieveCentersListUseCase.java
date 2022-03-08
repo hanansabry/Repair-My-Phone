@@ -2,6 +2,7 @@ package com.app.cms.domain.usecase;
 
 import com.app.cms.data.MaintenanceCenterRepository;
 import com.app.cms.model.MaintenanceCenter;
+import com.app.cms.model.Service;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class RetrieveCentersListUseCase {
         maintenanceCenterRepository.retrieveAllCenters(allCentersLiveData);
     }
 
-    public void executeByCategoryServiceId(String categoryId, String serviceId, MutableLiveData<List<MaintenanceCenter>> centersListMutableLiveData) {
-        maintenanceCenterRepository.retrieveCentersByCategoryServiceId(categoryId, serviceId, centersListMutableLiveData);
+    public void executeByCategoryServiceId(String categoryId, String serviceName, MutableLiveData<List<MaintenanceCenter>> centersListMutableLiveData) {
+        maintenanceCenterRepository.retrieveCentersByCategoryServiceId(categoryId, serviceName, centersListMutableLiveData);
     }
 }

@@ -51,10 +51,12 @@ public class MyRepairRequestActivity extends AppCompatActivity {
         ClientServiceRequestsAdapter adapter = new ClientServiceRequestsAdapter(serviceRequests, serviceRequest -> {
             Intent intent = new Intent(MyRepairRequestActivity.this, ServiceRequestActivity.class);
             intent.putExtra(Constants.SERVICE_REQUEST, serviceRequest);
+            intent.putExtra(Constants.STATUS, Constants.ACCEPT_REJECT);
             startActivity(intent);
         });
         clientRepairListRecyclerView.setAdapter(adapter);
         clientRepairListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.notifyDataSetChanged();
     }
 
     @OnClick(R.id.btnBack)

@@ -66,6 +66,37 @@
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="match_parent"
+                android:text="Center Name:"
+                android:textSize="16sp"
+                android:gravity="center|start"/>
+
+            <EditText
+                android:id="@+id/centerNameEditText"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="60dp"
+                android:background="@drawable/corner_light_white"
+                android:gravity="bottom"
+                android:hint="Center Name"
+                android:inputType="phone"
+                android:padding="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/text_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
                 android:text="Phone:"
                 android:textSize="16sp"
                 android:gravity="center|start"/>
@@ -329,6 +360,66 @@
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/text_gray" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statusRadioGroupView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:weightSum="5"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:text="Status:"
+                android:textSize="16sp"
+                android:gravity="start|center"/>
+
+            <RadioGroup
+                android:id="@+id/statusRadioGroup"
+                android:layout_width="0dp"
+                android:layout_weight="3.5"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+                <RadioButton
+                    android:id="@+id/approveStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approve" />
+
+                <RadioButton
+                    android:id="@+id/rejectStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reject" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnSendRequest"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/cornered_primary_bg_fill"
+            android:text="Send Request"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </ScrollView>

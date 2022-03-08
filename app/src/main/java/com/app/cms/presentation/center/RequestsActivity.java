@@ -47,11 +47,19 @@ public class RequestsActivity extends AppCompatActivity {
     private void initiateRequestsRecyclerView(List<ServiceRequest> serviceRequests) {
         ServicesRequestsAdapter requestsAdapter = new ServicesRequestsAdapter(serviceRequests, serviceRequest -> {
             Intent intent = new Intent(this, ServiceRequestActivity.class);
+            intent.putExtra(Constants.CENTER_ID, centerId);
             intent.putExtra(Constants.SERVICE_REQUEST, serviceRequest);
+            if (serviceRequest.getStatus().equals(Constants.NEW) || serviceRequest.getStatus().equals(Constants.PENDING)) {
+                intent.putExtra(Constants.STATUS, Constants.PENDING);
+            } else {
+                intent.putExtra(Constants.STATUS, Constants.ACCEPT_REJECT);
+                intent.putExtra(Constants.IS_CENTER, true);
+            }
             startActivity(intent);
         });
         requestsRecyclerView.setAdapter(requestsAdapter);
         requestsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        requestsAdapter.notifyDataSetChanged();
     }
 
     @OnClick(R.id.btnBack)

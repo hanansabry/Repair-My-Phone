@@ -3,82 +3,85 @@ package com.app.cms.domain;
 import com.app.cms.data.ServiceRequestsRepository;
 import com.app.cms.model.MaintenanceCenter;
 import com.app.cms.model.ServiceRequest;
+import com.app.cms.presentation.Constants;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 public class ServiceRequestsRepositoryImpl implements ServiceRequestsRepository {
+
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(Constants.SERVICE_REQUEST_NODE);
+
+    @Override
+    public void addServiceRequest(ServiceRequest serviceRequest, MutableLiveData<Boolean> success) {
+        databaseReference.push().setValue(serviceRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                success.setValue(task.isSuccessful());
+            }
+        });
+    }
+
     @Override
     public void retrieveServiceRequestByCenterId(String centerId, MutableLiveData<List<ServiceRequest>> serviceRequestListMutableLiveData) {
-        ServiceRequest serviceRequest1 = new ServiceRequest();
-        serviceRequest1.setPhone("234564351");
-        serviceRequest1.setService("service 1");
-        serviceRequest1.setStatus("new");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<ServiceRequest> serviceRequests = new ArrayList<>();
+                for (DataSnapshot serviceRequestSnapshot : snapshot.getChildren()) {
+                    ServiceRequest serviceRequest = serviceRequestSnapshot.getValue(ServiceRequest.class);
+                    serviceRequest.setId(serviceRequestSnapshot.getKey());
+                    if (serviceRequest.getCenterId().equals(centerId)) {
+                        serviceRequests.add(serviceRequest);
+                    }
+                }
+                serviceRequestListMutableLiveData.setValue(serviceRequests);
+            }
 
-        ServiceRequest serviceRequest2 = new ServiceRequest();
-        serviceRequest2.setPhone("01014736447");
-        serviceRequest2.setService("service 2");
-        serviceRequest2.setStatus("pending");
-
-        ServiceRequest serviceRequest3 = new ServiceRequest();
-        serviceRequest3.setPhone("79793213");
-        serviceRequest3.setService("service 3");
-        serviceRequest3.setStatus("done");
-
-        ServiceRequest serviceRequest4 = new ServiceRequest();
-        serviceRequest4.setPhone("01231345");
-        serviceRequest4.setService("service 4");
-        serviceRequest4.setStatus("pending");
-
-        List<ServiceRequest> list = new ArrayList<>();
-        list.add(serviceRequest1);
-        list.add(serviceRequest2);
-        list.add(serviceRequest3);
-        list.add(serviceRequest4);
-
-        serviceRequestListMutableLiveData.setValue(list);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                serviceRequestListMutableLiveData.setValue(null);
+            }
+        });
     }
 
     @Override
     public void retrieveServiceRequestsByClientPhone(String phoneNUmber, MutableLiveData<List<ServiceRequest>> serviceRequestListMutableLiveData) {
-        MaintenanceCenter c1 = new MaintenanceCenter();
-        c1.setName("Center 1");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<ServiceRequest> serviceRequests = new ArrayList<>();
+                for (DataSnapshot serviceRequestSnapshot : snapshot.getChildren()) {
+                    ServiceRequest serviceRequest = serviceRequestSnapshot.getValue(ServiceRequest.class);
+                    serviceRequest.setId(serviceRequestSnapshot.getKey());
+                    if (serviceRequest.getPhone().equals(phoneNUmber)) {
+                        serviceRequests.add(serviceRequest);
+                    }
+                }
+                serviceRequestListMutableLiveData.setValue(serviceRequests);
+            }
 
-        MaintenanceCenter c2 = new MaintenanceCenter();
-        c2.setName("Center 2");
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                serviceRequestListMutableLiveData.setValue(null);
+            }
+        });
+    }
 
-        ServiceRequest serviceRequest1 = new ServiceRequest();
-        serviceRequest1.setPhone("234564351");
-        serviceRequest1.setService("service 1");
-        serviceRequest1.setStatus("new");
-        serviceRequest1.setCenter(c1);
-
-        ServiceRequest serviceRequest2 = new ServiceRequest();
-        serviceRequest2.setPhone("01014736447");
-        serviceRequest2.setService("service 2");
-        serviceRequest2.setStatus("pending");
-        serviceRequest2.setCenter(c1);
-
-        ServiceRequest serviceRequest3 = new ServiceRequest();
-        serviceRequest3.setPhone("79793213");
-        serviceRequest3.setService("service 3");
-        serviceRequest3.setStatus("done");
-        serviceRequest3.setCenter(c2);
-
-        ServiceRequest serviceRequest4 = new ServiceRequest();
-        serviceRequest4.setPhone("01231345");
-        serviceRequest4.setService("service 4");
-        serviceRequest4.setStatus("pending");
-        serviceRequest4.setCenter(c2);
-
-        List<ServiceRequest> list = new ArrayList<>();
-        list.add(serviceRequest1);
-        list.add(serviceRequest2);
-        list.add(serviceRequest3);
-        list.add(serviceRequest4);
-
-        serviceRequestListMutableLiveData.setValue(list);
+    @Override
+    public void updateServiceRequest(ServiceRequest serviceRequest, MutableLiveData<Boolean> success) {
+        databaseReference.child(serviceRequest.getId()).setValue(serviceRequest).addOnCompleteListener(task -> {
+            success.setValue(task.isSuccessful());
+        });
     }
 }

@@ -48,13 +48,16 @@ public class ServiceDetailsActivity extends AppCompatActivity {
         showDetailsButton.setVisibility(View.INVISIBLE);
 
         RetrieveCentersListViewModel retrieveCentersListViewModel = ViewModelProviders.of(this).get(RetrieveCentersListViewModel.class);
-        retrieveCentersListViewModel.retrieveCentersByCategoryServiceId(categoryName, service.getId());
+        retrieveCentersListViewModel.retrieveCentersByCategoryServiceId(categoryName, service.getName());
         retrieveCentersListViewModel.getCentersListLiveData().observe(this, this::initiateCenterListRecyclerView);
     }
 
     private void initiateCenterListRecyclerView(List<MaintenanceCenter> maintenanceCenters) {
-        ServiceAvailableCentersAdapter centersAdapter = new ServiceAvailableCentersAdapter(maintenanceCenters, service, center -> {
+        ServiceAvailableCentersAdapter centersAdapter = new ServiceAvailableCentersAdapter(maintenanceCenters, service.getName(), center -> {
             Intent intent = new Intent(this, ServiceRequestActivity.class);
+            intent.putExtra(Constants.CENTER_ID, center.getId());
+            intent.putExtra(Constants.SERVICE_NAME, service.getName());
+            intent.putExtra(Constants.STATUS, Constants.NEW);
             startActivity(intent);
         });
         centerListRecyclerView.setAdapter(centersAdapter);

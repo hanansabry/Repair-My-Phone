@@ -9,15 +9,17 @@ public class ServiceRequest implements Parcelable {
 
     private String id;
     private String phone;
-    private MaintenanceCenter center;
+    private String centerId;
+    private String centerName;
     private String issue;
     private String service;
     private String region;
     private String offer;
     private String feedback;
     private String comment;
-    private Date appointment;
+    private String appointment;
     private String status;
+    private String deal;
 
     public ServiceRequest() {
     }
@@ -25,13 +27,17 @@ public class ServiceRequest implements Parcelable {
     protected ServiceRequest(Parcel in) {
         id = in.readString();
         phone = in.readString();
+        centerId = in.readString();
+        centerName = in.readString();
         issue = in.readString();
         service = in.readString();
         region = in.readString();
         offer = in.readString();
         feedback = in.readString();
         comment = in.readString();
+        appointment = in.readString();
         status = in.readString();
+        deal = in.readString();
     }
 
     public static final Creator<ServiceRequest> CREATOR = new Creator<ServiceRequest>() {
@@ -54,6 +60,14 @@ public class ServiceRequest implements Parcelable {
         this.id = id;
     }
 
+    public String getCenterId() {
+        return centerId;
+    }
+
+    public void setCenterId(String centerId) {
+        this.centerId = centerId;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -62,12 +76,12 @@ public class ServiceRequest implements Parcelable {
         this.phone = phone;
     }
 
-    public MaintenanceCenter getCenter() {
-        return center;
+    public String getCenterName() {
+        return centerName;
     }
 
-    public void setCenter(MaintenanceCenter center) {
-        this.center = center;
+    public void setCenterName(String centerName) {
+        this.centerName = centerName;
     }
 
     public String getIssue() {
@@ -118,11 +132,11 @@ public class ServiceRequest implements Parcelable {
         this.comment = comment;
     }
 
-    public Date getAppointment() {
+    public String getAppointment() {
         return appointment;
     }
 
-    public void setAppointment(Date appointment) {
+    public void setAppointment(String appointment) {
         this.appointment = appointment;
     }
 
@@ -134,6 +148,14 @@ public class ServiceRequest implements Parcelable {
         this.status = status;
     }
 
+    public String getDeal() {
+        return deal;
+    }
+
+    public void setDeal(String deal) {
+        this.deal = deal;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -143,12 +165,16 @@ public class ServiceRequest implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(phone);
+        dest.writeString(centerId);
+        dest.writeString(centerName);
         dest.writeString(issue);
         dest.writeString(service);
         dest.writeString(region);
         dest.writeString(offer);
         dest.writeString(feedback);
         dest.writeString(comment);
+        dest.writeString(appointment);
         dest.writeString(status);
+        dest.writeString(deal);
     }
 }

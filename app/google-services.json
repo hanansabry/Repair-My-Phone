@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1035342375740",
-    "firebase_url": "https://car-maintenance-system-a71d2-default-rtdb.firebaseio.com",
-    "project_id": "car-maintenance-system-a71d2",
-    "storage_bucket": "car-maintenance-system-a71d2.appspot.com"
+    "project_number": "595747819738",
+    "firebase_url": "https://repair-my-phone-84066-default-rtdb.firebaseio.com",
+    "project_id": "repair-my-phone-84066",
+    "storage_bucket": "repair-my-phone-84066.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1035342375740:android:2c3db0010c7f05cf724c39",
+        "mobilesdk_app_id": "1:595747819738:android:6835551c0e190c34d415e3",
         "android_client_info": {
-          "package_name": "com.app.cms"
+          "package_name": "com.app.repairmyphone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1035342375740-dvlq4e5l5upe6blh15g0h1q3la9quuql.apps.googleusercontent.com",
+          "client_id": "595747819738-03eedhcqggikgg0n22cubdqb57agvv3s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBBkzVh2F4r0fzK98rsongRdI_YiU5f7SM"
+          "current_key": "AIzaSyC6P9OCJ20dgunPDuXnZcOi67NlF2ykSlw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1035342375740-dvlq4e5l5upe6blh15g0h1q3la9quuql.apps.googleusercontent.com",
+              "client_id": "595747819738-03eedhcqggikgg0n22cubdqb57agvv3s.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

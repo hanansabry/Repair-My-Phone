@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.cms">
+    package="com.app.repairmyphone">
 
     <application
         android:allowBackup="true"
@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.client.MaintenanceCentersListActivity"/>
-        <activity android:name=".presentation.client.MyRepairRequestActivity" />
-        <activity android:name=".presentation.client.ServiceDetailsActivity" />
-        <activity android:name=".presentation.ServiceRequestActivity" />
-        <activity android:name=".presentation.center.RequestsActivity" />
-        <activity android:name=".presentation.center.ServicesActivity" />
-        <activity android:name=".presentation.center.LoginActivity" />
-        <activity android:name=".presentation.client.RepairCarHomeActivity" />
-        <activity android:name=".presentation.center.MaintenanceCenterRegisterationActivity" />
-        <activity android:name=".presentation.center.MaintenanceCenterHomeActivity" />
-        <activity android:name=".presentation.StartActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.client.MaintenanceCentersListActivity"/>
+        <activity android:name="com.app.repairmyphone.presentation.client.MyRepairRequestActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.client.ServiceDetailsActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.ServiceRequestActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.center.RequestsActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.center.ServicesActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.center.LoginActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.client.RepairCarHomeActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.center.MaintenanceCenterRegisterationActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.center.MaintenanceCenterHomeActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.StartActivity" />
         <activity
-            android:name=".presentation.SplashActivity"
+            android:name="com.app.repairmyphone.presentation.SplashActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "CMS"
+rootProject.name = "Repair My Phone"

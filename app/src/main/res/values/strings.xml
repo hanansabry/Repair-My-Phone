@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">CMS</string>
-    <string name="repair_my_car">Repair My Car</string>
-    <string name="login_as_car_maintenance">Login as Car Maintenance Center</string>
+    <string name="app_name">Repair My Phone</string>
+    <string name="repair_my_phone">Repair My Phone</string>
+    <string name="login_as_phone_maintenance">Login as Phone Maintenance Center</string>
     <string name="not_a_member">Not a member yet? Register Now</string>
     <string name="register_as_maintenance_center">Register As Maintenance Center</string>
     <string name="full_name">Name</string>

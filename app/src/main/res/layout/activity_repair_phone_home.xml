@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#70ffffff">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,13 +24,13 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="@color/colorPrimaryDarkLowOpacity"
+                android:background="@color/colorPrimaryDark"
                 android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/maintenance_phone_list"
+                    android:src="@drawable/center_icon"
                     android:layout_centerInParent="true"/>
 
                 <TextView
@@ -41,7 +41,7 @@
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/squada_one"
                     android:text="Maintenance Shop List"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorAccent"
                     android:textSize="32sp" />
 
                 <View
@@ -57,14 +57,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="#50ffffff"
+                android:background="@color/colorAccent"
                 android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/searchImageView"
                     android:layout_width="150dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/search_maintenance_shop"
+                    android:src="@drawable/shop_centers"
                     android:layout_marginTop="8dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"/>
@@ -87,7 +87,7 @@
                         android:layout_weight="1"
                         android:text="@string/category"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/colorPrimaryDark"/>
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/categoriesSpinner"
@@ -115,7 +115,7 @@
                         android:layout_weight="1"
                         android:text="@string/service"
                         android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/colorPrimaryDark"/>
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/servicesSpinner"
@@ -141,7 +141,7 @@
                     android:paddingEnd="16dp"
                     android:text="@string/search_maintenance_center"
                     android:textAllCaps="false"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -153,7 +153,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="#50000000">
+                android:background="@color/colorPrimaryDark">
 
                 <View
                     android:layout_width="match_parent"
@@ -165,6 +165,7 @@
                     android:id="@+id/repairRequestImageView"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
                     android:src="@drawable/phone_services"
                     android:layout_centerHorizontal="true"/>
 
@@ -187,7 +188,7 @@
                         android:background="@drawable/corner_light_white"
                         android:gravity="center_vertical"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/colorPrimary" />
+                        android:textColor="@color/colorAccent" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -199,13 +200,13 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/cornered_primary_bg_fill"
+                    android:background="@drawable/cornered_accent_bg_fill"
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="My Repair Request"
                     android:textAllCaps="false"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </RelativeLayout>

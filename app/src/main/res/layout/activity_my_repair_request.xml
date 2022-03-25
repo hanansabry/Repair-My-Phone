@@ -61,8 +61,7 @@
             android:layout_height="wrap_content"
             android:text="01014736447 "
             android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/chonburi"/>
+            android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
 

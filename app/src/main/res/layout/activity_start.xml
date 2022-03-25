@@ -36,7 +36,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/cornered_primary_bg_fill"
             android:text="@string/repair_my_phone"
-            android:textColor="@color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textAllCaps="false"/>

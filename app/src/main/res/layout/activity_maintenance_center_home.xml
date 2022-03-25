@@ -99,7 +99,7 @@
                     android:fontFamily="@font/squada_one"
                     android:gravity="center"
                     android:text="@string/services"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="40sp"
                     android:layout_marginTop="8dp"/>
 
@@ -129,7 +129,7 @@
                     android:fontFamily="@font/squada_one"
                     android:gravity="center"
                     android:text="@string/requests"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="40sp" />
 
             </RelativeLayout>

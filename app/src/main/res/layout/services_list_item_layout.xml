@@ -58,6 +58,7 @@
             android:layout_weight=".6"
             android:src="@drawable/ic_show_details"
             android:background="@null"
+            android:tint="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground"
             android:layout_gravity="end"/>
 

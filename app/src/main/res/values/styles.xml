@@ -23,7 +23,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>  //Activated color
         <item name="colorOnSurface">@color/text_gray</item>    //Normal color
         <item name="colorError">#50FC0000</item>        //Error color
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
 
         //Text Appearance styles
         <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>

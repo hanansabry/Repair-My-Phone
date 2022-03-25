@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorTransBg"
+    android:background="@color/colorAccent"
     tools:context=".presentation.client.MyRepairRequestActivity">
 
     <RelativeLayout
@@ -38,9 +38,10 @@
     </RelativeLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/repair_request_list"/>
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/center_icon"
+        android:layout_gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Phone Number:     "
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/phoneNumberTextView"

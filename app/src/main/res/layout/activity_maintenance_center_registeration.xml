@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg2"
+    android:background="@color/colorAccent"
     tools:context=".presentation.center.MaintenanceCenterRegisterationActivity">
 
     <LinearLayout
@@ -322,7 +322,7 @@
             android:text="@string/register"
             android:textAllCaps="false"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
     </LinearLayout>

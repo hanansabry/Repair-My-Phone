@@ -19,7 +19,7 @@
             android:layout_weight="2.1"
             android:gravity="start"
             android:textSize="14sp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:text="Center Name" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_weight="2.1"
             android:gravity="center"
             android:textSize="14sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
             android:text="Phone" />
 
         <TextView

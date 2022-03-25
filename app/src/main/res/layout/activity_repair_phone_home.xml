@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg2"
-    tools:context=".presentation.client.RepairCarHomeActivity">
+    tools:context=".presentation.client.RepairPhoneHomeActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 <ImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/maintenance_car_list"
+                    android:src="@drawable/maintenance_phone_list"
                     android:layout_centerInParent="true"/>
 
                 <TextView
@@ -141,7 +141,7 @@
                     android:paddingEnd="16dp"
                     android:text="@string/search_maintenance_center"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -165,7 +165,7 @@
                     android:id="@+id/repairRequestImageView"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/car_services"
+                    android:src="@drawable/phone_services"
                     android:layout_centerHorizontal="true"/>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -205,7 +205,7 @@
                     android:paddingEnd="16dp"
                     android:text="My Repair Request"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </RelativeLayout>

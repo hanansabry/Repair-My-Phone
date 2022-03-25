@@ -47,7 +47,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="14sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"
             android:text="Region" />
 
     </LinearLayout>

@@ -7,7 +7,7 @@ import com.app.repairmyphone.R;
 import com.app.repairmyphone.presentation.center.LoginActivity;
 import com.app.repairmyphone.presentation.center.MaintenanceCenterHomeActivity;
 import com.app.repairmyphone.presentation.center.MaintenanceCenterRegisterationActivity;
-import com.app.repairmyphone.presentation.client.RepairCarHomeActivity;
+import com.app.repairmyphone.presentation.client.RepairPhoneHomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +24,8 @@ public class StartActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnStart)
-    public void onRepairMyCarClicked() {
-        startActivity(new Intent(this, RepairCarHomeActivity.class));
+    public void onRepairMyPhoneClicked() {
+        startActivity(new Intent(this, RepairPhoneHomeActivity.class));
     }
 
     @OnClick(R.id.btnCenter)

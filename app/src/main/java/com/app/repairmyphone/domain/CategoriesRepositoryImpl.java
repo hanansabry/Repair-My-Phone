@@ -31,9 +31,9 @@ public class CategoriesRepositoryImpl implements CategoriesRepository {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<String> categoryList = new ArrayList<>();
                 for (DataSnapshot categorySnapshot : snapshot.getChildren()) {
-                    HashMap<String, String> category = (HashMap<String, String>) categorySnapshot.getValue();
-                    Map.Entry<String, String> entry = category.entrySet().iterator().next();
-                    String categoryName =  entry.getValue();
+//                    HashMap<String, String> category = (HashMap<String, String>) categorySnapshot.getValue();
+//                    Map.Entry<String, String> entry = category.entrySet().iterator().next();
+                    String categoryName =  categorySnapshot.getValue(String.class);
                     categoryList.add(categoryName);
                 }
                 categoryListLiveData.setValue(categoryList);

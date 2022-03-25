@@ -29,7 +29,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="16sp"
-            android:text="Price Rate" />
+            android:text="Price Rate"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg2"
+    android:background="@color/colorAccent"
     tools:context=".presentation.StartActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#50FFFFFF" />
+         />
 
     <ImageView
         android:layout_width="200dp"
@@ -36,7 +36,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/cornered_primary_bg_fill"
             android:text="@string/repair_my_phone"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textAllCaps="false"/>

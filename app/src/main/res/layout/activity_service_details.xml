@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorTransBg"
+    android:background="@color/colorAccent"
     android:orientation="vertical"
     tools:context=".presentation.client.ServiceDetailsActivity">
 
@@ -41,7 +41,7 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/car_services"
+        android:src="@drawable/phone_services"
         android:layout_gravity="center"/>
 
     <include

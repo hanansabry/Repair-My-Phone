@@ -23,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RepairCarHomeActivity extends AppCompatActivity {
+public class RepairPhoneHomeActivity extends AppCompatActivity {
 
     private RetrieveCategoriesViewModel retrieveCategoriesViewModel;
     private RetrieveServicesViewModel retrieveServicesViewModel;
@@ -41,7 +41,7 @@ public class RepairCarHomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_repair_car_home);
+        setContentView(R.layout.activity_repair_phone_home);
         ButterKnife.bind(this);
 
         pd = new ProgressDialog(this);

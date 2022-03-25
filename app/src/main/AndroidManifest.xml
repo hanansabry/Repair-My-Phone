@@ -16,7 +16,7 @@
         <activity android:name="com.app.repairmyphone.presentation.center.RequestsActivity" />
         <activity android:name="com.app.repairmyphone.presentation.center.ServicesActivity" />
         <activity android:name="com.app.repairmyphone.presentation.center.LoginActivity" />
-        <activity android:name="com.app.repairmyphone.presentation.client.RepairCarHomeActivity" />
+        <activity android:name="com.app.repairmyphone.presentation.client.RepairPhoneHomeActivity" />
         <activity android:name="com.app.repairmyphone.presentation.center.MaintenanceCenterRegisterationActivity" />
         <activity android:name="com.app.repairmyphone.presentation.center.MaintenanceCenterHomeActivity" />
         <activity android:name="com.app.repairmyphone.presentation.StartActivity" />

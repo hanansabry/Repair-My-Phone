@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#50ffffff"
+        android:background="@color/colorAccent"
         android:orientation="vertical">
         <RelativeLayout
             android:id="@+id/titleBarView"
@@ -87,8 +87,8 @@
                 <ImageView
                     android:id="@+id/servicesImageView"
                     android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:src="@drawable/car_services"
+                    android:layout_height="230dp"
+                    android:src="@drawable/phone_services"
                     android:layout_centerHorizontal="true"/>
 
                 <TextView
@@ -100,7 +100,8 @@
                     android:gravity="center"
                     android:text="@string/services"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    android:layout_marginTop="8dp"/>
 
             </RelativeLayout>
 
@@ -110,13 +111,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:foreground="?attr/selectableItemBackground"
-                android:background="#99000000">
+                android:background="@color/colorPrimary">
 
                 <ImageView
                     android:id="@+id/requestsImageView"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:src="@drawable/car_requests"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/phone_requests"
                     android:layout_centerHorizontal="true"/>
 
                 <TextView
@@ -127,7 +129,7 @@
                     android:fontFamily="@font/squada_one"
                     android:gravity="center"
                     android:text="@string/requests"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="40sp" />
 
             </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorTransBg"
+    android:background="@color/colorAccent"
     tools:context=".presentation.ServiceRequestActivity">
 
     <LinearLayout
@@ -68,7 +68,8 @@
                 android:layout_height="match_parent"
                 android:text="Center Name:"
                 android:textSize="16sp"
-                android:gravity="center|start"/>
+                android:gravity="center|start"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/centerNameEditText"
@@ -99,7 +100,8 @@
                 android:layout_height="match_parent"
                 android:text="Phone:"
                 android:textSize="16sp"
-                android:gravity="center|start"/>
+                android:gravity="center|start"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/phoneEditText"
@@ -130,7 +132,8 @@
                 android:layout_height="match_parent"
                 android:text="Issue:"
                 android:textSize="16sp"
-                android:gravity="center|start"/>
+                android:gravity="center|start"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/issueEditText"
@@ -161,7 +164,8 @@
                 android:layout_height="match_parent"
                 android:text="Service:   "
                 android:textSize="16sp"
-                android:gravity="center|start"/>
+                android:gravity="center|start"
+                android:textColor="@color/white"/>
             <EditText
                 android:id="@+id/serviceEditText"
                 android:layout_width="0dp"
@@ -191,7 +195,8 @@
                 android:layout_height="match_parent"
                 android:text="Region:    "
                 android:textSize="16sp"
-                android:gravity="center|start"/>
+                android:gravity="center|start"
+                android:textColor="@color/white"/>
             <EditText
                 android:id="@+id/regionEditText"
                 android:layout_width="0dp"
@@ -221,7 +226,8 @@
                 android:layout_height="match_parent"
                 android:text="Offer:"
                 android:textSize="16sp"
-                android:gravity="start|center"/>
+                android:gravity="start|center"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/offerEditText"
@@ -252,7 +258,8 @@
                 android:layout_height="match_parent"
                 android:text="Feedback:"
                 android:textSize="14sp"
-                android:gravity="start|center"/>
+                android:gravity="start|center"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/feedbackEditText"
@@ -283,7 +290,8 @@
                 android:layout_height="match_parent"
                 android:text="Comment:"
                 android:textSize="16sp"
-                android:gravity="start|center"/>
+                android:gravity="start|center"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/commentEditText"
@@ -314,7 +322,8 @@
                 android:layout_height="match_parent"
                 android:text="Appointment:"
                 android:textSize="14sp"
-                android:gravity="start|center"/>
+                android:gravity="start|center"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/appointmentEditText"
@@ -345,7 +354,8 @@
                 android:layout_height="match_parent"
                 android:text="Deal:"
                 android:textSize="16sp"
-                android:gravity="start|center"/>
+                android:gravity="start|center"
+                android:textColor="@color/white"/>
             <EditText
                 android:id="@+id/dealEditText"
                 android:layout_width="0dp"
@@ -378,7 +388,8 @@
                 android:layout_height="match_parent"
                 android:text="Status:"
                 android:textSize="16sp"
-                android:gravity="start|center"/>
+                android:gravity="start|center"
+                android:textColor="@color/white"/>
 
             <RadioGroup
                 android:id="@+id/statusRadioGroup"
@@ -418,7 +429,7 @@
             android:text="Send Request"
             android:textAllCaps="false"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
     </LinearLayout>
